@@ -5,7 +5,7 @@ MAINTAINER Eric Sites <eric@meros.io>
 
 # Location of the STI scripts inside the image
 #
-LABEL io.meros.s2i.scripts-url=image:///usr/local/sti
+LABEL io.deploydock.s2i.scripts-url=image:///usr/local/sti
 
 # DEPRECATED: This label will be kept here for backward compatibility
 LABEL io.s2i.scripts-url=image:///usr/local/sti
