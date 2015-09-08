@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# This script is used to build, test and squash the OpenShift Docker images.
+# This script is used to build, test and squash the DeployDock Docker images.
 #
 # $1 - Specifies distribution - "rhel7" or "centos7"
 # TEST_MODE - If set, build a candidate image and test it
@@ -10,7 +10,7 @@ OS=$1
 
 DOCKERFILE_PATH=""
 BASE_DIR_NAME=$(echo $(basename `pwd`) | sed -e 's/-[0-9]*$//g')
-BASE_IMAGE_NAME="openshift/${BASE_DIR_NAME#sti-}"
+BASE_IMAGE_NAME="deploydock/${BASE_DIR_NAME#sti-}"
 
 # Cleanup the temporary Dockerfile created by docker build with version
 trap "rm -f ${DOCKERFILE_PATH}.version" SIGINT SIGQUIT EXIT
@@ -22,7 +22,7 @@ function docker_build_with_version {
   DOCKERFILE_PATH=$(perl -MCwd -e 'print Cwd::abs_path shift' $dockerfile)
   cp ${DOCKERFILE_PATH} "${DOCKERFILE_PATH}.version"
   git_version=$(git rev-parse --short HEAD)
-  echo "LABEL io.openshift.builder-base-version=\"${git_version}\"" >> "${dockerfile}.version"
+  echo "LABEL io.meros.builder-base-version=\"${git_version}\"" >> "${dockerfile}.version"
   docker build -t ${IMAGE_NAME} -f "${dockerfile}.version" .
   if [[ "${SKIP_SQUASH}" -ne "1" ]]; then
     squash "${dockerfile}.version"

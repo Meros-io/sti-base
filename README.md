@@ -1,13 +1,13 @@
-OpenShift base images
+DeployDock base images
 ========================================
-This repository contains [Dockerfiles](https://github.com/openshift/sti-base)
+This repository contains [Dockerfiles](https://github.com/Meros-io/sti-base)
 which serve as base images with all the essential libraries and tools needed
-for OpenShift language images, namely:
-* [sti-ruby](https://github.com/openshift/sti-ruby)
-* [sti-nodejs](https://github.com/openshift/sti-nodejs)
-* [sti-python](https://github.com/openshift/sti-python)
-* [sti-perl](https://github.com/openshift/sti-perl)
-* [sti-php](https://github.com/openshift/sti-php)
+for DeployDock language images, namely:
+* [sti-ruby](https://github.com/Meros-io/sti-ruby)
+* [sti-nodejs](https://github.com/Meros-io/sti-nodejs)
+* [sti-python](https://github.com/Meros-io/sti-python)
+* [sti-perl](https://github.com/Meros-io/sti-perl)
+* [sti-php](https://github.com/Meros-io/sti-php)
 
 Installation and Usage
 ------------------------
@@ -17,7 +17,7 @@ Choose either the CentOS7 or RHEL7 base image:
 To build a RHEL7 based image, you need to build it on properly subscribed RHEL machine.
 
 ```
-$ git clone https://github.com/openshift/sti-base.git
+$ git clone https://github.com/Meros-io/sti-base.git
 $ cd sti-base
 $ make build TARGET=rhel7
 ```
@@ -27,20 +27,20 @@ $ make build TARGET=rhel7
 This image is available on DockerHub. To download it run:
 
 ```console
-docker pull openshift/base-centos7
+docker pull deploydock/base-centos7
 ```
 
 To build a Base image from scratch run:
 
 ```
-$ git clone https://github.com/openshift/sti-base.git
+$ git clone https://github.com/Meros-io/sti-base.git
 $ cd sti-base
 $ make build
 ```
 
 Software Collections in S2I images
 --------------------------------
-OpenShift S2I images use [Software Collections](https://www.softwarecollections.org/en/)
+DeployDock S2I images use [Software Collections](https://www.softwarecollections.org/en/)
 packages to provide the latest versions of various language environments.
 The SCL packages are released more frequently than the RHEL or CentOS systems,
 which are unlikely to change for several years.
@@ -49,7 +49,7 @@ because those are stable, supported, and secure platforms.
 
 Normally, SCL requires manual operation to enable the collection you want to use.
 This is burdensome and can be prone to error.
-The OpenShift S2I approach is to set Bash environment variables that
+The DeployDock S2I approach is to set Bash environment variables that
 serve to automatically enable the desired collection:
 
 * `BASH_ENV`: enables the collection for all non-interactive Bash sessions
